@@ -1,4 +1,4 @@
-export class UriTemplates {
+export class UriTemplate {
 
     private static uriTemplateGlobalModifiers = {
         '+': true,
@@ -59,7 +59,11 @@ export class UriTemplates {
         return result;
     }
 
-    public fromUri(substituted) {
+    public fillFromObject(obj): string {
+        return this.fill(obj);
+    }
+
+    public fromUri(substituted): any {
         var result = {};
         for (var i = 0; i < this.textParts.length; i++) {
             var part = this.textParts[i];
@@ -111,7 +115,7 @@ export class UriTemplates {
 
     private uriTemplateSubstitution(spec: string): any {
         var modifier = '';
-        if (UriTemplates.uriTemplateGlobalModifiers[spec.charAt(0)]) {
+        if (UriTemplate.uriTemplateGlobalModifiers[spec.charAt(0)]) {
             modifier = spec.charAt(0);
             spec = spec.substring(1);
         }
@@ -159,7 +163,7 @@ export class UriTemplates {
                 truncate = parseInt(parts[1]);
             }
             var suffices = {};
-            while (UriTemplates.uriTemplateSuffices[varName.charAt(varName.length - 1)]) {
+            while (UriTemplate.uriTemplateSuffices[varName.charAt(varName.length - 1)]) {
                 suffices[varName.charAt(varName.length - 1)] = true;
                 varName = varName.substring(0, varName.length - 1);
             }
@@ -198,7 +202,7 @@ export class UriTemplates {
                                 result += varSpec.name + '=';
                             }
                         }
-                        result += shouldEscape ? encodeURIComponent(value[j]).replace(/!/g, '%21') : UriTemplates.notReallyPercentEncode(value[j]);
+                        result += shouldEscape ? encodeURIComponent(value[j]).replace(/!/g, '%21') : UriTemplate.notReallyPercentEncode(value[j]);
                     }
                 } else if (typeof value == 'object') {
                     if (showVariables && !varSpec.suffices['*']) {
@@ -210,9 +214,9 @@ export class UriTemplates {
                             result += varSpec.suffices['*'] ? (separator || ',') : ',';
                         }
                         first = false;
-                        result += shouldEscape ? encodeURIComponent(key).replace(/!/g, '%21') : UriTemplates.notReallyPercentEncode(value[j])(key);
+                        result += shouldEscape ? encodeURIComponent(key).replace(/!/g, '%21') : UriTemplate.notReallyPercentEncode(value[j])(key);
                         result += varSpec.suffices['*'] ? '=' : ',';
-                        result += shouldEscape ? encodeURIComponent(value[key]).replace(/!/g, '%21') : UriTemplates.notReallyPercentEncode(value[j])(value[key]);
+                        result += shouldEscape ? encodeURIComponent(value[key]).replace(/!/g, '%21') : UriTemplate.notReallyPercentEncode(value[j])(value[key]);
                     }
                 } else {
                     if (showVariables) {
@@ -224,7 +228,7 @@ export class UriTemplates {
                     if (varSpec.truncate != null) {
                         value = value.substring(0, varSpec.truncate);
                     }
-                    result += shouldEscape ? encodeURIComponent(value).replace(/!/g, '%21') : UriTemplates.notReallyPercentEncode(value[j])(value);
+                    result += shouldEscape ? encodeURIComponent(value).replace(/!/g, '%21') : UriTemplate.notReallyPercentEncode(value[j])(value);
                 }
             }
             return result;

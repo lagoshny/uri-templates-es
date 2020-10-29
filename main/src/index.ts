@@ -1,3 +1,3 @@
-import { UriTemplates } from './lib/uri-templates';
+import { UriTemplate } from './lib/uri-template';
 
-export { UriTemplates } from './lib/uri-templates';
+export { UriTemplate } from './lib/uri-template';
