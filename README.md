@@ -5,7 +5,7 @@ Can find original library [here](https://github.com/geraintluff/uri-templates).
 
 URI Templates ([RFC6570](http://tools.ietf.org/html/rfc6570)) in JavaScript, including de-substitution.
 
-It is tested against the [official test suite](), including the extended tests.
+It is tested against the [official test suite](https://github.com/lagoshny/uri-templates-es/tree/master/main/test), including the extended tests **(more that 300 tests)**.
 
 The 'de-substitution' extracts parameter values from URIs.  It is also tested against the official test suite (including extended tests).
 
@@ -53,12 +53,12 @@ Example of guess variables from URI ('de-substitution'):
 const uri2b = '/prefix/?beep=boop&bleep=bloop';
 const params = template2.fromUri(uri2b);
 /*
-	{
-		params: {
-			beep: 'boop',
-			bleep: 'bloop'
-		}
-	}
+{
+  params: {
+    beep: 'boop',
+    bleep: 'bloop'
+    
+  }
 */
 ```
 
@@ -72,9 +72,9 @@ const template = new UriTemplate('{/id*}{?fields,token}');
 const values = template.fromUri('/person/albums?fields=id,name,picture&token=12345');
 /*
 {
-	id: ['person', 'albums'],
-	fields: ['id', 'name', 'picture'],
-	token: '12345'
+  id: ['person', 'albums'],
+  fields: ['id', 'name', 'picture'],
+  token: '12345'
 }
 */
 ```
