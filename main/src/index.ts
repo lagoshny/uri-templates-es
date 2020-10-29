@@ -1,3 +1,3 @@
-export class TestClass {
-    private first: number;
-}
+import { UriTemplates } from './lib/uri-templates';
+
+export { UriTemplates } from './lib/uri-templates';
