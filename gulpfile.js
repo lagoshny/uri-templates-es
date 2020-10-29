@@ -31,7 +31,7 @@ function buildTestFiles() {
     return function buildTestFiles(done) {
         gulp.src(['./main/src/**/*.spec.ts'])
             .pipe(webpack({
-                watch: true,
+                watch: argv.watch,
                 mode: 'development',
                 output: {
                     filename: '[name].spec.js',
@@ -65,11 +65,14 @@ function buildTestFiles() {
 }
 
 function runTests() {
+    console.log(argv.watch);
     return function runTests(done) {
         new KarmaServer({
             configFile: path.resolve(__dirname, 'karma.conf.js'),
-            autoWatch: true,
+            // autoWatch: argv.watch,
             port: 9876,
+            singleRun: !argv.watch,
+            browsers: [argv.browsers]
         }).start();
         done();
     }

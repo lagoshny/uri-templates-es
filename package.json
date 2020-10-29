@@ -6,8 +6,9 @@
   "license": "MIT",
   "author": "Ilya Lagoshny",
   "scripts": {
-    "build": "gulp build --project uri-templates-es",
-    "test": "gulp test"
+    "build": "gulp build --project=uri-templates-es",
+    "test": "gulp test --watch=true",
+    "test-flow": "gulp test --watch=false --browsers=ChromeHeadless"
   },
   "dependencies": {},
   "devDependencies": {
