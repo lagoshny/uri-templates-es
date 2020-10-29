@@ -1,13 +1,12 @@
 {
-  "name": "@lagoshny/uri-templates-es",
-  "version": "1.0.0-beta",
-  "description": "",
-  "config": {
-    "logLevel": "-LL"
-  },
+  "name": "uri-templates-es",
+  "version": "1.0.0",
+  "description": "URI Templates (RFC6570) including de-substitution",
+  "readme": "README.md",
+  "license": "MIT",
+  "author": "Ilya Lagoshny",
   "scripts": {
-    "build": "tsc --project tsconfig.json",
-    "gbuild": "gulp build --project uri-templates-es",
+    "build": "gulp build --project uri-templates-es",
     "test": "gulp test"
   },
   "dependencies": {},
@@ -29,6 +28,20 @@
     "webpack-stream": "^6.1.0",
     "yargs": "^16.1.0"
   },
-  "author": "Ilya Lagoshny",
-  "license": "ISC"
+  "keywords": [
+    "rfc6570",
+    "uri",
+    "template",
+    "parse url params",
+    "get url parts",
+    "put vars to url"
+  ],
+  "homepage": "https://github.com/lagoshny/uri-templates-es",
+  "issues": {
+    "url": "https://github.com/lagoshny/uri-templates-es/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lagoshny/uri-templates-es"
+  }
 }
