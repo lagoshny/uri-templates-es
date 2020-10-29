@@ -2,9 +2,9 @@ import { UriTemplate } from './uri-template';
 
 describe('UriTemplate', () => {
 
-    it("Basic substitution", () => {
-        const template = new UriTemplate("/prefix/{var}/suffix");
-        const uri = template.fillFromObject({var: "test"});
+    it('Basic substitution', () => {
+        const template = new UriTemplate('/prefix/{var}/suffix');
+        const uri = template.fillFromObject({var: 'test'});
 
         expect(uri).toBe('/prefix/test/suffix');
     });
@@ -57,9 +57,9 @@ describe('UriTemplate', () => {
 
 });
 
-createTests("Spec examples by section", import('../../test/spec-examples-by-section.json'));
-createTests("Extended examples", import('../../test/extended-tests.json'));
-createTests("Custom examples 1", import('../../test/custom-tests.json'));
+createTests('Spec examples by section', import('../../test/spec-examples-by-section.json'));
+createTests('Extended examples', import('../../test/extended-tests.json'));
+createTests('Custom examples 1', import('../../test/custom-tests.json'));
 createTests('Custom examples 2', import('../../test/custom-tests-2.json'));
 
 function createTests(title, importedFile) {

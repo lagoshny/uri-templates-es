@@ -193,46 +193,46 @@ export class UriTemplate {
                 if (i == startIndex) {
                     result += prefix;
                 } else {
-                    result += (separator || ",");
+                    result += (separator || ',');
                 }
                 if (Array.isArray(value)) {
                     if (showVariables) {
-                        result += varSpec.name + "=";
+                        result += varSpec.name + '=';
                     }
                     for (var j = 0; j < value.length; j++) {
                         if (j > 0) {
-                            result += varSpec.suffices['*'] ? (separator || ",") : ",";
+                            result += varSpec.suffices['*'] ? (separator || ',') : ',';
                             if (varSpec.suffices['*'] && showVariables) {
-                                result += varSpec.name + "=";
+                                result += varSpec.name + '=';
                             }
                         }
-                        result += shouldEscape ? encodeURIComponent(value[j]).replace(/!/g, "%21") : UriTemplate.notReallyPercentEncode(value[j]);
+                        result += shouldEscape ? encodeURIComponent(value[j]).replace(/!/g, '%21') : UriTemplate.notReallyPercentEncode(value[j]);
                     }
-                } else if (typeof value == "object") {
+                } else if (typeof value == 'object') {
                     if (showVariables && !varSpec.suffices['*']) {
-                        result += varSpec.name + "=";
+                        result += varSpec.name + '=';
                     }
                     var first = true;
                     for (var key in value) {
                         if (!first) {
-                            result += varSpec.suffices['*'] ? (separator || ",") : ",";
+                            result += varSpec.suffices['*'] ? (separator || ',') : ',';
                         }
                         first = false;
-                        result += shouldEscape ? encodeURIComponent(key).replace(/!/g, "%21") : UriTemplate.notReallyPercentEncode(key);
-                        result += varSpec.suffices['*'] ? '=' : ",";
-                        result += shouldEscape ? encodeURIComponent(value[key]).replace(/!/g, "%21") : UriTemplate.notReallyPercentEncode(value[key]);
+                        result += shouldEscape ? encodeURIComponent(key).replace(/!/g, '%21') : UriTemplate.notReallyPercentEncode(key);
+                        result += varSpec.suffices['*'] ? '=' : ',';
+                        result += shouldEscape ? encodeURIComponent(value[key]).replace(/!/g, '%21') : UriTemplate.notReallyPercentEncode(value[key]);
                     }
                 } else {
                     if (showVariables) {
                         result += varSpec.name;
                         if (!trimEmptyString || value != "") {
-                            result += "=";
+                            result += '=';
                         }
                     }
                     if (varSpec.truncate != null) {
                         value = value.substring(0, varSpec.truncate);
                     }
-                    result += shouldEscape ? encodeURIComponent(value).replace(/!/g, "%21"): UriTemplate.notReallyPercentEncode(value);
+                    result += shouldEscape ? encodeURIComponent(value).replace(/!/g, '%21'): UriTemplate.notReallyPercentEncode(value);
                 }
             }
             return result;
@@ -249,11 +249,11 @@ export class UriTemplate {
                 var varSpec = varSpecs[0];
                 var varName = varSpec.name;
                 var arrayValue = varSpec.suffices['*'] ? stringValue.split(separator || ',') : [stringValue];
-                var hasEquals = (shouldEscape && stringValue.indexOf('=') != -1);	// There's otherwise no way to distinguish between "{value*}" for arrays and objects
+                var hasEquals = (shouldEscape && stringValue.indexOf('=') != -1);	// There's otherwise no way to distinguish between '{value*}' for arrays and objects
                 for (var i = 1; i < arrayValue.length; i++) {
                     var stringValue = arrayValue[i];
                     if (hasEquals && stringValue.indexOf('=') == -1) {
-                        // Bit of a hack - if we're expecting "=" for key/value pairs, and values can't contain "=", then assume a value has been accidentally split
+                        // Bit of a hack - if we're expecting '=' for key/value pairs, and values can't contain '=', then assume a value has been accidentally split
                         arrayValue[i - 1] += (separator || ',') + stringValue;
                         arrayValue.splice(i, 1);
                         i--;
@@ -339,7 +339,7 @@ export class UriTemplate {
                         }
                     }
                     if (firstStarred == i) {
-                        // The first [i] of them have no "*" suffix
+                        // The first [i] of them have no '*' suffix
                         specIndexMap[i] = i;
                         continue;
                     } else {
@@ -350,7 +350,7 @@ export class UriTemplate {
                             }
                         }
                         if ((varSpecs.length - lastStarred) == (arrayValue.length - i)) {
-                            // The last [length - i] of them have no "*" suffix
+                            // The last [length - i] of them have no '*' suffix
                             specIndexMap[i] = lastStarred;
                             continue;
                         }
