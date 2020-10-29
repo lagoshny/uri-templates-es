@@ -29,9 +29,11 @@ function copyFiles() {
 
 function buildTestFiles() {
     return function buildTestFiles(done) {
-        gulp.src(['./main/src/**/*.spec.ts'])
+        let countWebpackProceedFiles = 0;
+        let countFinishedFiles = 0;
+        gulp.src('./main/src/**/*.spec.ts')
             .pipe(webpack({
-                watch: argv.watch,
+                watch: JSON.parse(argv.watch),
                 mode: 'development',
                 output: {
                     filename: '[name].spec.js',
@@ -59,21 +61,32 @@ function buildTestFiles() {
                     extensions: ['.ts']
                 }
             }))
-            .pipe(gulp.dest(path.resolve(__dirname, 'dist/tests')));
-        done();
+            .on('data', () => {
+                countWebpackProceedFiles++;
+            })
+            .pipe(gulp.dest(path.resolve(__dirname, 'dist/tests')))
+            .on('data', () => {
+                // This is needed to finish the endless task of monitoring the webpack (when watch is true) to be able run the next task.
+                countFinishedFiles++;
+                if (countWebpackProceedFiles === countFinishedFiles) {
+                    done();
+                }
+            });
     };
 }
 
 function runTests() {
-    console.log(argv.watch);
     return function runTests(done) {
-        new KarmaServer({
+        const karmaConf = {
+            autoWatch: JSON.parse(argv.watch),
+            singleRun: !JSON.parse(argv.watch),
             configFile: path.resolve(__dirname, 'karma.conf.js'),
-            // autoWatch: argv.watch,
             port: 9876,
-            singleRun: !argv.watch,
-            browsers: [argv.browsers]
-        }).start();
-        done();
+        };
+        if (argv.browsers) {
+            karmaConf.browsers = [argv.browsers];
+        }
+
+        new KarmaServer(karmaConf).start().then(done());
     }
 }
