@@ -20,7 +20,7 @@ npm i uri-templates-es --save
 Create a template object:
 
 ```javascript
-import { UriTemplate } from '@lagoshny/uri-templates-es';
+import { UriTemplate } from 'uri-templates-es';
 
 const template1 = new UriTemplate('/date/{colour}/{shape}/');
 const template2 = new UriTemplate('/prefix/{?params*}');
