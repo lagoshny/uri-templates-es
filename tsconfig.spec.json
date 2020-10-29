@@ -2,6 +2,7 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "declaration": false,
+    "resolveJsonModule": true,
     "outDir": "./dist/tests",
     "types": [
       "jasmine",

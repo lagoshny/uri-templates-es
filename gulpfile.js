@@ -12,7 +12,7 @@ const KarmaServer = require('karma').Server;
 gulp.task('buildProject', shell.task('tsc --project tsconfig.json'));
 
 gulp.task('build', gulp.series(clean('./dist/' + argv.project), 'buildProject', copyFiles()));
-gulp.task('test', gulp.series(clean('./dist/tests'), buildTestFiles()));
+gulp.task('test', gulp.series(clean('./dist/tests'), buildTestFiles(), runTests()));
 
 function clean(path) {
     return function clean() {
@@ -60,12 +60,17 @@ function buildTestFiles() {
                 }
             }))
             .pipe(gulp.dest(path.resolve(__dirname, 'dist/tests')));
+        done();
+    };
+}
 
+function runTests() {
+    return function runTests(done) {
         new KarmaServer({
             configFile: path.resolve(__dirname, 'karma.conf.js'),
             autoWatch: true,
             port: 9876,
-        }, done).start();
+        }).start();
         done();
-    };
+    }
 }
