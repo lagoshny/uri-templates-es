@@ -1,4 +1,27 @@
 # UriTemplatesEs
+<a href="https://github.com/lagoshny/uri-templates-es">
+  <img src="https://img.shields.io/github/v/release/lagoshny/uri-templates-es" alt="Last release version" />
+</a>&nbsp;
+
+<a href="https://github.com/lagoshny/uri-templates-es/actions?query=workflow%3ABuild">
+  <img src="https://img.shields.io/github/workflow/status/lagoshny/uri-templates-es/Build/master" alt="Pipeline info" />
+</a>&nbsp;
+
+<a href="https://github.com/lagoshny/uri-templates-es/issues">
+  <img src="https://img.shields.io/github/issues/lagoshny/uri-templates-es" alt="Total open issues" />
+</a>&nbsp;
+
+<a href="https://www.npmjs.com/package/uri-templates-es">
+  <img src="https://img.shields.io/npm/dt/uri-templates-es" alt="Total downloads by npm" />
+</a>&nbsp;
+
+<a href="https://github.com/lagoshny/uri-templates-es">
+  <img src="https://img.shields.io/npm/l/uri-templates-es" alt="License info" />
+</a>&nbsp;
+
+<br />
+<br />
+
 This is a ported library version built to support `es standard`.
 
 Can find original library [here](https://github.com/geraintluff/uri-templates).
