@@ -1,6 +1,6 @@
 # UriTemplatesEs
-<a href="https://github.com/lagoshny/uri-templates-es">
-  <img src="https://img.shields.io/github/v/release/lagoshny/uri-templates-es" alt="Last release version" />
+<a href="https://www.npmjs.com/package/uri-templates-es">
+  <img src="https://img.shields.io/npm/v/uri-templates-es" alt="Last released npm version" />
 </a>&nbsp;
 
 <a href="https://github.com/lagoshny/uri-templates-es/actions?query=workflow%3ABuild">
@@ -15,7 +15,7 @@
   <img src="https://img.shields.io/npm/dt/uri-templates-es" alt="Total downloads by npm" />
 </a>&nbsp;
 
-<a href="https://github.com/lagoshny/uri-templates-es">
+<a href="https://mit-license.org/">
   <img src="https://img.shields.io/npm/l/uri-templates-es" alt="License info" />
 </a>&nbsp;
 
