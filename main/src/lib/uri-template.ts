@@ -54,7 +54,7 @@ export class UriTemplate {
         }
     }
 
-    public fill(valueFunction: Record<string, any> | ValueFunction): string {
+    public fill(valueFunction?: Record<string, any> | ValueFunction): string {
         const valueFn: ValueFunction =
             typeof valueFunction === 'function'
                 ? (valueFunction as ValueFunction)
@@ -71,7 +71,7 @@ export class UriTemplate {
         return result;
     }
 
-    public fillFromObject(obj: Record<string, any>): string {
+    public fillFromObject(obj?: Record<string, any>): string {
         return this.fill(obj);
     }
 

@@ -10,7 +10,7 @@ const argv = require('yargs')(process.argv)
     }).parse();
 const webpack = require('webpack-stream');
 const path = require('path');
-const KarmaServer = require('karma').Server;
+const {Server, config} = require("karma");
 
 
 gulp.task('buildProject', shell.task('tsc --project tsconfig.json'));
@@ -80,17 +80,28 @@ function buildTestFiles() {
 }
 
 function runTests() {
-    return function runTests(done) {
-        const karmaConf = {
+    return async function runTests() {
+        const cliOptions = {
             autoWatch: JSON.parse(argv.watch),
             singleRun: !JSON.parse(argv.watch),
-            configFile: path.resolve(__dirname, 'karma.conf.js'),
-            port: 9876,
+            port: 9876
         };
+
         if (argv.browsers) {
-            karmaConf.browsers = [argv.browsers];
+            cliOptions.browsers = [argv.browsers];
         }
 
-        new KarmaServer(karmaConf).start().then(done());
-    }
+        const karmaConfig = await config.parseConfig(
+            path.resolve(__dirname, 'karma.conf.js'),
+            cliOptions,
+            {
+                promiseConfig: true,
+                throwErrors: true
+            }
+        );
+
+        const server = new Server(karmaConfig);
+
+        await server.start();
+    };
 }

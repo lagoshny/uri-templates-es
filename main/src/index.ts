@@ -1,1 +1,1 @@
-export { UriTemplate } from './lib/uri-template.js';
+export { UriTemplate } from './lib/uri-template';

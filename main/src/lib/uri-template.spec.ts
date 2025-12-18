@@ -18,9 +18,9 @@ describe('UriTemplate', () => {
         const template = new UriTemplate('{+path}/c/capture{/date,id,page}');
         const guess = template.fromUri('/a/b/c/capture/20140101/1');
 
-        expect(guess.date).toBe('20140101');
-        expect(guess.id).toBe('1');
-        expect(guess.page).toBeUndefined();
+        expect(guess?.date).toBe('20140101');
+        expect(guess?.id).toBe('1');
+        expect(guess?.page).toBeUndefined();
     });
 
     it('Original string available', () => {
@@ -44,14 +44,14 @@ describe('UriTemplate', () => {
         const template = new UriTemplate('{?query}');
         const guess = template.fromUri('?');
 
-        expect(guess['']).toBeUndefined();
+        expect(guess?.['']).toBeUndefined();
     });
 
     it('Must return an empty object in property', () => {
         const template = new UriTemplate('{?query*}');
         const guess = template.fromUri('?');
 
-        expect(guess['']).toBeUndefined();
+        expect(guess?.['']).toBeUndefined();
     });
 });
 
