@@ -1,16 +1,35 @@
 {
   "name": "uri-templates-es",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "URI Templates (RFC6570) including de-substitution",
-  "readme": "README.md",
   "license": "MIT",
   "author": "Ilya Lagoshny",
+
+  "type": "module",
+
+  "main": "dist/uri-templates-es/index.js",
+  "types": "dist/uri-templates-es/index.d.ts",
+
+  "exports": {
+    ".": {
+      "import": "./dist/uri-templates-es/index.js",
+      "types": "./dist/uri-templates-es/index.d.ts"
+    }
+  },
+
+  "files": [
+    "dist/uri-templates-es",
+    "README.md",
+    "LICENSE"
+  ],
+
   "scripts": {
     "build": "tsup --watch",
     "build-prod": "tsup",
     "test": "vitest",
     "test-flow": "vitest run"
   },
+
   "devDependencies": {
     "@types/node": "^25.0.3",
     "@vitest/browser": "^4.0.16",
@@ -18,6 +37,7 @@
     "typescript": "5.9.3",
     "vitest": "^4.0.16"
   },
+
   "keywords": [
     "rfc6570",
     "uri",
@@ -26,6 +46,7 @@
     "get url parts",
     "put vars to url"
   ],
+
   "homepage": "https://github.com/lagoshny/uri-templates-es",
   "issues": {
     "url": "https://github.com/lagoshny/uri-templates-es/issues"
