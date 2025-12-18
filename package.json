@@ -1,6 +1,6 @@
 {
   "name": "uri-templates-es",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "URI Templates (RFC6570) including de-substitution",
   "readme": "README.md",
   "license": "MIT",
