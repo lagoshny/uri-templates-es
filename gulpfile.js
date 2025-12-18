@@ -3,7 +3,11 @@ const gulp = require('gulp');
 const del = require('del');
 const shell = require('gulp-shell');
 const copy = require('gulp-copy');
-const argv = require('yargs').argv;
+const argv = require('yargs')(process.argv)
+    .option('watch', {
+        type: 'boolean',
+        default: false,
+    }).parse();
 const webpack = require('webpack-stream');
 const path = require('path');
 const KarmaServer = require('karma').Server;
@@ -16,7 +20,7 @@ gulp.task('test', gulp.series(clean('./dist/tests'), buildTestFiles(), runTests(
 
 function clean(path) {
     return function clean() {
-        return del(path, {force: true});
+        return del.deleteAsync(path, {force: true});
     };
 }
 
